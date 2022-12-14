@@ -54,10 +54,16 @@ public class BigInt {
     }
 
     public BigInt add(BigInt secondOperand) {
+        // soit les deux Bi ont le même signe
+        // alors le résultat sera de ce signe et o1.add(o2)
+        // sinon on fait le plus grand - le plus petit et on met le signe en conséquence
         return new BigInt();
     }
 
     public BigInt subtract(BigInt secondOperand) {
+        // soit les deux Bi ont le même signe
+        // alors on fait le plus grand - le plus petit et on met le signe en conséquence
+        // sinon le résultat sera de ce signe et o1.add(o2)
         return new BigInt();
     }
 }
