@@ -5,8 +5,10 @@ import com.jad.bigint.BigUnsignedInt;
 public class Main {
 
     public static void main(String[] args) {
-        BigUnsignedInt i = new BigUnsignedInt("12");
-        BigUnsignedInt j = new BigUnsignedInt("98");
+        BigUnsignedInt i = new BigUnsignedInt("121212121212121212");
+        System.out.println(i);
+        BigUnsignedInt j = new BigUnsignedInt("989898989898989898");
+        System.out.println(j);
         System.out.println(i.add(j));
     }
 }
