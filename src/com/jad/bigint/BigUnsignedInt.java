@@ -74,10 +74,6 @@ public class BigUnsignedInt {
         this.tail = tail;
     }
 
-    public void setNumber(String numberInString) {
-        this.setHead(stringToBigUnsignedInt(numberInString).getHead());
-    }
-
     @Override
     public String toString() {
         StringBuilder stringToReturn = new StringBuilder();
@@ -127,6 +123,10 @@ public class BigUnsignedInt {
     }
 
     public static int compare(BigUnsignedInt firstOperand, BigUnsignedInt secondOperand) {
+        return 0;
+    }
+
+    public int countDigits() {
         return 0;
     }
 }
