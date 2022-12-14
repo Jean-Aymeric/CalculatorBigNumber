@@ -2,6 +2,7 @@ package com.jad.bigint;
 
 public class BigUnsignedInt {
     private Digit head;
+    private Digit tail;
 
     public BigUnsignedInt() {
         this(new Digit((byte) 0));
@@ -9,14 +10,17 @@ public class BigUnsignedInt {
 
     public BigUnsignedInt(final Digit head) {
         this.head = head;
+        this.tail = head;
     }
 
     public BigUnsignedInt(final String numberInString) {
         BigUnsignedInt i = stringToBigUnsignedInt(numberInString);
         if (i.getHead() == null) {
             this.head = null;
+            this.tail = null;
         } else {
             this.head = i.getHead();
+            this.tail = i.getTail();
         }
     }
 
@@ -51,6 +55,23 @@ public class BigUnsignedInt {
 
     protected void setHead(final Digit head) {
         this.head = head;
+        if (head == null) {
+            this.tail = null;
+        } else {
+            Digit temporaryDigit = this.head;
+            while (temporaryDigit.getNext() != null) {
+                temporaryDigit = temporaryDigit.getNext();
+            }
+            this.tail = temporaryDigit;
+        }
+    }
+
+    public Digit getTail() {
+        return tail;
+    }
+
+    public void setTail(final Digit tail) {
+        this.tail = tail;
     }
 
     public void setNumber(String numberInString) {
@@ -105,7 +126,7 @@ public class BigUnsignedInt {
         return bigUnsignedIntToReturn;
     }
 
-    public static BigUnsignedInt compare(BigUnsignedInt firstOperand, BigUnsignedInt secondOperand) {
-        return new BigUnsignedInt();
+    public static int compare(BigUnsignedInt firstOperand, BigUnsignedInt secondOperand) {
+        return 0;
     }
 }

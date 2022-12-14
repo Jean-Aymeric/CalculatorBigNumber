@@ -9,6 +9,7 @@ public class Main {
         System.out.println(i);
         BigUnsignedInt j = new BigUnsignedInt("989898989898989898");
         System.out.println(j);
-        System.out.println(i.add(j));
+        BigUnsignedInt k = i.add(j);
+        System.out.println(k);
     }
 }
