@@ -1,17 +1,14 @@
 package com.jad;
 
+import com.jad.bigint.BigInt;
 import com.jad.bigint.BigUnsignedInt;
 
 public class Main {
 
     public static void main(String[] args) {
-        BigUnsignedInt i = new BigUnsignedInt("121212121212121212");
+        BigInt i = new BigInt("1234567890123456789012345678901234567890");
         System.out.println(i);
-        BigUnsignedInt j = new BigUnsignedInt("989898989898989898");
+        BigInt j = new BigInt("-987654321098765432109876543210987654321");
         System.out.println(j);
-        BigUnsignedInt k = i.add(j);
-        System.out.println(k);
-        BigUnsignedInt l =  new BigUnsignedInt(i);
-        System.out.println(BigUnsignedInt.compare(j, i));
     }
 }

@@ -39,7 +39,9 @@ public class Digit {
     public void setNext(final Digit next) {
         if (next != this) {
             this.next = next;
-            next.setPrevious(this);
+            if (next != null) {
+                next.setPrevious(this);
+            }
         }
     }
 
