@@ -104,4 +104,8 @@ public class BigUnsignedInt {
         bigUnsignedIntToReturn.setHead(head);
         return bigUnsignedIntToReturn;
     }
+
+    public static BigUnsignedInt compare(BigUnsignedInt firstOperand, BigUnsignedInt secondOperand) {
+        return new BigUnsignedInt();
+    }
 }
