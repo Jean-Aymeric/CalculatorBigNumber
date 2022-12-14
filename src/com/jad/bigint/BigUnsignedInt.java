@@ -59,6 +59,12 @@ public class BigUnsignedInt {
 
     @Override
     public String toString() {
-        return "";
+        StringBuilder stringToReturn = new StringBuilder();
+        Digit temporaryDigit = this.getHead();
+        while(temporaryDigit != null) {
+            stringToReturn.insert(0, temporaryDigit.getDigit());
+            temporaryDigit = temporaryDigit.getNext();
+        }
+        return stringToReturn.toString();
     }
 }
