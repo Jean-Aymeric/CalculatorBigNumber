@@ -11,5 +11,7 @@ public class Main {
         System.out.println(j);
         BigUnsignedInt k = i.add(j);
         System.out.println(k);
+        BigUnsignedInt l =  new BigUnsignedInt(i);
+        System.out.println(BigUnsignedInt.compare(j, i));
     }
 }

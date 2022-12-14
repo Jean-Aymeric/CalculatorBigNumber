@@ -12,6 +12,18 @@ public class Digit {
         this.previous = null;
     }
 
+    public Digit(Digit d) {
+        if (d == null) {
+            this.digit = 0;
+            this.next = null;
+            this.previous = null;
+        } else {
+            this.digit = d.getDigit();
+            this.next = null;
+            this.previous = null;
+        }
+    }
+
     public byte getDigit() {
         return digit;
     }

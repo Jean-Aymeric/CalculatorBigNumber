@@ -24,6 +24,23 @@ public class BigUnsignedInt {
         }
     }
 
+    public BigUnsignedInt(final BigUnsignedInt bui) {
+        if (bui == null) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            Digit temporaryDigitSource = bui.getHead();
+            Digit temporaryDigitDestination = new Digit(temporaryDigitSource);
+            this.head = temporaryDigitDestination;
+            while(temporaryDigitSource.getNext() != null) {
+                temporaryDigitDestination.setNext(new Digit(temporaryDigitSource.getNext()));
+                temporaryDigitSource = temporaryDigitSource.getNext();
+                temporaryDigitDestination = temporaryDigitDestination.getNext();
+            }
+            this.tail = temporaryDigitDestination;
+        }
+    }
+
     static BigUnsignedInt stringToBigUnsignedInt(String numberInString) {
         BigUnsignedInt bigUnsignedIntToReturn = new BigUnsignedInt();
         if (numberInString.equals("")) {
@@ -123,10 +140,36 @@ public class BigUnsignedInt {
     }
 
     public static int compare(BigUnsignedInt firstOperand, BigUnsignedInt secondOperand) {
+        int nbDigitsFirstOperand = firstOperand.countDigits();
+        int nbDigitsSecondOperand = secondOperand.countDigits();
+        if (nbDigitsFirstOperand < nbDigitsSecondOperand) {
+            return - 1;
+        }
+        if (nbDigitsFirstOperand > nbDigitsSecondOperand) {
+            return 1;
+        }
+        Digit firstOperandDigit = firstOperand.getTail();
+        Digit secondOperandDigit = secondOperand.getTail();
+        while ((firstOperandDigit != null) || (secondOperandDigit != null)) {
+            firstOperandDigit = (firstOperandDigit != null) ? firstOperandDigit.getPrevious() : null;
+            secondOperandDigit = (secondOperandDigit != null) ? secondOperandDigit.getPrevious() : null;
+            if (((firstOperandDigit != null) ? firstOperandDigit.getDigit() : 0) < ((secondOperandDigit != null) ? secondOperandDigit.getDigit() : 0)) {
+                return - 1;
+            }
+            if (((firstOperandDigit != null) ? firstOperandDigit.getDigit() : 0) > ((secondOperandDigit != null) ? secondOperandDigit.getDigit() : 0)) {
+                return 1;
+            }
+        }
         return 0;
     }
 
     public int countDigits() {
-        return 0;
+        Digit temporaryDigit = this.head;
+        int counter = 0;
+        while (temporaryDigit != null) {
+            counter++;
+            temporaryDigit = temporaryDigit.getNext();
+        }
+        return counter;
     }
 }
