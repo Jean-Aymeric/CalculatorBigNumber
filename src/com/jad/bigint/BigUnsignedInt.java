@@ -67,4 +67,8 @@ public class BigUnsignedInt {
         }
         return stringToReturn.toString();
     }
+
+    public BigUnsignedInt add(BigUnsignedInt secondOperand) {
+        return new BigUnsignedInt();
+    }
 }
