@@ -13,7 +13,7 @@ public class BigUnsignedInt {
 
     public BigUnsignedInt(final String numberInString) {
         BigUnsignedInt i = stringToBigUnsignedInt(numberInString);
-        if (i == null) {
+        if (i.getHead() == null) {
             this.head = null;
         } else {
             this.head = i.getHead();
@@ -21,7 +21,28 @@ public class BigUnsignedInt {
     }
 
     static BigUnsignedInt stringToBigUnsignedInt(String numberInString) {
-        return null;
+        BigUnsignedInt bigUnsignedIntToReturn = new BigUnsignedInt();
+        if (numberInString.equals("")) {
+            return bigUnsignedIntToReturn;
+        }
+
+        char[] numberInCharArray = numberInString.toCharArray();
+        Digit head =  null;
+        Digit temporaryDigit =  null;
+        for (int i = numberInString.length() - 1; i >= 0; i--) {
+            if ((numberInCharArray[i] < '0') || (numberInCharArray[i] > '9')) {
+                return new BigUnsignedInt();
+            }
+            Digit digit = new Digit((byte) (numberInCharArray[i] - '0'));
+            if (head == null) {
+                head = digit;
+            } else {
+                temporaryDigit.setNext(digit);
+            }
+            temporaryDigit = digit;
+        }
+        bigUnsignedIntToReturn.setHead(head);
+        return bigUnsignedIntToReturn;
     }
 
     protected Digit getHead() {
